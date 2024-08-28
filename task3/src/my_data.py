@@ -46,7 +46,8 @@ class MyDataset(data.Dataset):
         return text_tensor.to(self.device)
 
     def get_train_data(self, batch_size=8):
-        samples = random.sample(self.train_dict.keys(), batch_size)
+        # Convert dict keys to a list before sampling
+        samples = random.sample(list(self.train_dict.keys()), batch_size)
 
         texts = [self.train_dict[k][0] for k in samples]
         labels = [self.train_dict[k][1] for k in samples]
