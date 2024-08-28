@@ -16,9 +16,9 @@ def test():
 
     model = MyModel0(len(VOCAB), 16, args.hidden_size).to(args.device)
     dataset = MyDataset(None, args.device, test_path="data/test_dict.pth")
-
+    print('Loading model')
     model.load_state_dict(torch.load("model.pth"))
-
+    print('Loaded model')
     model.eval()
     with torch.no_grad():
         for key in dataset.test_dict.keys():
